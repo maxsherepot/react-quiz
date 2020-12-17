@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
 import red from "./images/red.png"
+import А from "./images/A.png";
+import Б from "./images/Б.jpg";
+import В from "./images/В.png";
+import Г from "./images/Г.png";
+
 
 export default function App() {
 	const questions = [
 		{
-			questionText: 'A =',
+			questionText: 'A = ',
+			// questionImage: [
+			// 	А,
+			// 	Б,
+			// 	В,
+			// 	Г,
+			// 	red
+			// ],
 			answerOptions: [
-				{ url:"", answerText: 'A', isCorrect: true },
+				{ red, answerText: 'A', isCorrect: true },
 				{ answerText: 'Б', isCorrect: false },
 				{ answerText: 'В', isCorrect: false },
 				{ answerText: 'Г', isCorrect: false },
+				{ answerText: '122', isCorrect: false },
 			],
 		},
 		{
@@ -33,8 +46,6 @@ export default function App() {
 		{
 			questionText: 'Г =',
 			answerOptions: [
-				{ answerText: 'A', isCorrect: false },
-				{ answerText: 'Б', isCorrect: false },
 				{ answerText: 'В', isCorrect: false },
 				{ answerText: 'Г', isCorrect: true },
 			],
@@ -44,40 +55,76 @@ export default function App() {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [score, setScore] = useState(0);
 	const [showScore, setShowScore] = useState(false);
+	const [progress, setProgress] = useState(0);
 
 	const handleAnswerOptionClick = (isCorrect) => {
-
 		// Відмічання правильних відповідей
-		if (isCorrect) {
-			setScore(score + 1);
-		}
+		{ isCorrect && setScore(score + 1) };
 
 		// Перехід на наступне питання
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
+			setProgress((progress) => {
+				return progress + 25
+			})
 		} else {
 			// Показ рахунку вкінці квізу
 			setShowScore(true);
 		}
 	};
 
+	const ScoreWindow = () => {
+		return (
+			<div className='score-section'>
+				You scored {score} out of {questions.length}
+			</div>
+		)
+	};
+
+	const ProgressBar = () => {
+		return (
+			<div className="mb-4">
+				<span className="accomplishedOn d-flex justify-content-center mb-2">Пройдено на {progress}%</span>
+
+				<div className="progress">
+					<div
+						className="progress-bar"
+						role="progressbar"
+						style={{ width: progress + "%" }}
+						aria-valuenow="70"
+						aria-valuemin="0"
+						aria-valuemax="100"></div>
+				</div>
+
+				<div className='question-count d-flex justify-content-end mt-1'>
+					<span>Питання {currentQuestion + 1}</span>/{questions.length}
+				</div>
+			</div>
+		)
+	};
+
+
 	return (
 		<div className='container'>
-			<div className='app p-1 d-flex align-items-center justify-content-center flex-column border border-secondary rounded bg-light'>
-				{showScore ? (
-					<div className='score-section'>
-						You scored {score} out of {questions.length}
-					</div>
-				) : (
+			<div className='app d-flex align-items-center justify-content-center flex-column border border-secondary rounded'>
+				{showScore ?
+					<ScoreWindow />
+					: (
 						<>
-							<div className='question-count mb-4 d-flex align-self-start'>
-								<span>Question {currentQuestion + 1}</span>/{questions.length}
-							</div>
+							<ProgressBar />
 
 							<div className='question-section m-3'>
-								<div className='question-text'>{questions[currentQuestion].questionText}</div>
-								<img src={red}></img>
+								<div>
+									<div className='question-text'>{questions[currentQuestion].questionText}</div>
+									{questions[currentQuestion].questionImage && questions[currentQuestion].questionImage.map(image =>
+										<img className="m-3" src={image} />
+									)}
+
+									{/* {questions[currentQuestion].questionImage.map(image =>
+										<img className="m-3" src={image} />
+									)} */}
+								</div>
 							</div>
 
 
@@ -95,7 +142,6 @@ export default function App() {
 
 								))}
 							</div>
-
 						</>
 					)}
 			</div>

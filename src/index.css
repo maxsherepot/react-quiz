@@ -12,28 +12,34 @@ body {
 } 
 
  body {
-  background-color: #176aaa;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 } 
 
-.question-count {
-     font-size: .8rem 
-}
- 
+
 .app {
-  background-color: #252d4a;
- min-width: 450px;
+  min-width: 450px;
   min-height: 200px;
-  box-shadow: 8px 10px 42px 0px rgba(0, 0, 0, 0.432);
-  display: flex;
-  justify-content: space-evenly;
 }
 
 img {
   max-width: 100px;
+}
+
+.progress {
+  width: 400px;
+  height: 5px !important;
+}
+
+/*             FONTS            */
+.question-count {
+     font-size: .8rem 
+}
+.accomplishedOn {
+  font-size: .6rem 
+
 }
 /*
 .score-section {
