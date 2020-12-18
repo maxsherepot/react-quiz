@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import red from "../images/red.png"
-import А from "../images/A.png";
-import Б from "../images/Б.jpg";
-import В from "../images/В.png";
-import Г from "../images/Г.png";
+// import red from "../images/red.png";
+// import А from "../images/A.png";
+// import Б from "../images/Б.jpg";
+// import В from "../images/В.png";
+// import Г from "../images/Г.png";
 import ScoreWindow from './ScoreWindow';
 import ProgressBar from './ProgressBar';
 import QuestionSection from './QuestionSection';
 import AnswerSection from './AnswerSection';
+import questionsJSON from "../json/json.js";
 
 
 export default function App() {
@@ -20,7 +21,7 @@ export default function App() {
 			// 	В,
 			// ],
 			answerOptions: [
-				{ red, answerText: 'A', isCorrect: true },
+				{ answerText: 'A', isCorrect: true },
 				{ answerText: 'Б', isCorrect: false },
 				{ answerText: 'В', isCorrect: false },
 				{ answerText: 'Г', isCorrect: false },
@@ -62,54 +63,51 @@ export default function App() {
 	const [checked, setChecked] = useState(false);
 	const [id, setId] = useState(null);
 
-
 	const onCheckboxClick = (answerOption, index) => {
 		setIsCorrect(answerOption);
 		setId(index);
 		setChecked(checked => !checked);
 	};
-	
-	
+
 	const handleAnswerOptionClick = () => {
 		// Відмічання правильних відповідей
 		{ isCorrect && setScore(score + 1) };
-		
 		// Перехід на наступне питання
 		const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
+		if (nextQuestion < questionsJSON.length) {
 			setCurrentQuestion(nextQuestion);
 			setIsCorrect(false);
 			setChecked(false);
-			setProgress((progress) => { return progress + 25 })
+			setProgress((progress) => { return progress + 10 })
 		} else {
 			// Показ рахунку вкінці квізу
 			setShowScore(true);
 		};
 	};
 
-	//console.log(id);
-	//console.log(isCorrect);
+	console.log(questionsJSON);
 
 	return (
 		<div className='container'>
-			<div className='app d-flex align-items-center justify-content-center flex-column border border-primary rounded'>
+			<div className='app d-flex align-items-center justify-content-center flex-column'>
 				{showScore ?
 					<ScoreWindow
-						score={score}
-						questions={questions} />
+					score={score}
+					questions={questionsJSON} />
 					: (
 						<>
+						<span className="mb-4 online-test bold">Oнлайн тест з математики</span>
 							<ProgressBar
 								progress={progress}
 								currentQuestion={currentQuestion}
-								questions={questions} />
+								questions={questionsJSON} />
 
 							<QuestionSection
-								questions={questions}
+								questions={questionsJSON}
 								currentQuestion={currentQuestion} />
 
 							{<AnswerSection
-								questions={questions}
+								questions={questionsJSON}
 								currentQuestion={currentQuestion}
 								handleAnswerOptionClick={handleAnswerOptionClick}
 								onCheckboxClick={onCheckboxClick}
@@ -121,4 +119,4 @@ export default function App() {
 			</div>
 		</div>
 	);
-}
+};

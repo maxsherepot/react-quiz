@@ -5,10 +5,10 @@ const ProgressBar = (props) => {
     const { progress, currentQuestion, questions } = props;
 
     return (
-        <div className="mb-4">
+        <div className="mb-2">
             <span className="accomplishedOn d-flex justify-content-center mb-2">Пройдено на {progress}%</span>
 
-            <div className="progress">
+            <div className="progress shadow">
                 <div
                     className="progress-bar"
                     role="progressbar"
@@ -18,8 +18,8 @@ const ProgressBar = (props) => {
                     aria-valuemax="100"></div>
             </div>
 
-            <div className='question-count d-flex justify-content-end mt-1'>
-                <span>Питання {currentQuestion + 1}</span>/{questions.length}
+            <div className='question-count d-flex justify-content-end align-items-center mt-1'>
+                <div className="bold current-question">{currentQuestion + 1}</div>/{questions.length}
             </div>
         </div>
     );
