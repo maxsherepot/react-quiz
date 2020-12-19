@@ -35,8 +35,12 @@ input[type=checkbox] {
   transform: scale(1.5);
 }
 
+input[type=text] {
+  min-width: 500px;
+}
 
-/*             FONTS            */
+
+/*//////////// FONTS////////////*/
 .question-count {
   font-size: .8rem 
 }
@@ -50,7 +54,7 @@ input[type=checkbox] {
 }
 
 .online-test {
-  font-size: .8rem;
+  font-size: .9rem;
 }
 
 .bold {
