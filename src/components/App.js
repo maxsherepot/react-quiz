@@ -4,6 +4,7 @@ import ProgressBar from './ProgressBar';
 import QuestionSection from './QuestionSection';
 import AnswerSection from './AnswerSection';
 import questionsJSON from "../json/json.js";
+import leftImage from "../images/leftImage.png";
 
 
 const App = () => {
@@ -42,33 +43,36 @@ const App = () => {
 
 
 	return (
-		<div className='container'>
-			<div className='app d-flex align-items-center justify-content-center flex-column '>
-				{showScore ?
-					<ScoreWindow
-						score={score}
-						questions={questionsJSON} />
-					: (
-						<>
-							<span className="mb-4 online-test bold">Oнлайн тест з математики</span>
-							<ProgressBar
-								progress={progress}
-								currentQuestion={currentQuestion}
-								questions={questionsJSON} />
+		<div className="d-flex">
+			<img src={leftImage} alt="left" className="imageBlock"></img>
+			<div className='container'>
+				<div className='app d-flex align-items-center justify-content-center flex-column '>
+					{showScore ?
+						<ScoreWindow
+							score={score}
+							questions={questionsJSON} />
+						: (
+							<>
+								<span className="mb-4 online-test bold">Oнлайн тест з математики</span>
+								<ProgressBar
+									progress={progress}
+									currentQuestion={currentQuestion}
+									questions={questionsJSON} />
 
-							<QuestionSection
-								questions={questionsJSON}
-								currentQuestion={currentQuestion} />
+								<QuestionSection
+									questions={questionsJSON}
+									currentQuestion={currentQuestion} />
 
-							{<AnswerSection
-								questions={questionsJSON}
-								currentQuestion={currentQuestion}
-								handleAnswerOptionClick={handleAnswerOptionClick}
-								onCheckboxClick={onCheckboxClick}
-								checked={checked}
-								id={id} />}
-						</>
-					)}
+								{<AnswerSection
+									questions={questionsJSON}
+									currentQuestion={currentQuestion}
+									handleAnswerOptionClick={handleAnswerOptionClick}
+									onCheckboxClick={onCheckboxClick}
+									checked={checked}
+									id={id} />}
+							</>
+						)}
+				</div>
 			</div>
 		</div>
 	);
