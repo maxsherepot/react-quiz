@@ -43,7 +43,7 @@ const App = () => {
 
 	return (
 		<div className='container'>
-			<div className='app d-flex align-items-center justify-content-center flex-column'>
+			<div className='app d-flex align-items-center justify-content-center flex-column '>
 				{showScore ?
 					<ScoreWindow
 						score={score}

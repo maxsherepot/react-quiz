@@ -10,16 +10,7 @@ import image9 from "../images/9.png";
 import image10 from "../images/10.png";
 
 
-
 const questionsJSON = [
-
-    {
-        questionImage: [image5],
-        answerType: 'input',
-        answerOptions: [],
-        correctAnswer: 17.5,
-    },
-
     {
         questionImage: [image1],
         answerType: 'select',
@@ -32,145 +23,153 @@ const questionsJSON = [
         ],
     },
 
-    // {
-    //     questionImage: [image2],
-    //     answerType: 'select',
-    //     answerOptions: [
-    //         { answerText: 'A', isCorrect: true },
-    //         { answerText: 'Б', isCorrect: false },
-    //         { answerText: 'В', isCorrect: false },
-    //         { answerText: 'Г', isCorrect: false },
-    //         { answerText: 'Д', isCorrect: false },
-    //     ],
-    // },
+    {
+        questionImage: [image2],
+        answerType: 'select',
+        answerOptions: [
+            { answerText: 'A', isCorrect: true },
+            { answerText: 'Б', isCorrect: false },
+            { answerText: 'В', isCorrect: false },
+            { answerText: 'Г', isCorrect: false },
+            { answerText: 'Д', isCorrect: false },
+        ],
+    },
 
-    // {
-    //     questionImage: [image3],
-    //     answerType: 'select',
-    //     answerOptions: [
-    //         { answerText: 'A', isCorrect: true },
-    //         { answerText: 'Б', isCorrect: false },
-    //         { answerText: 'В', isCorrect: false },
-    //         { answerText: 'Г', isCorrect: false },
-    //     ],
-    // },
+    {
+        questionImage: [image3],
+        answerType: 'select',
+        answerOptions: [
+            { answerText: 'A', isCorrect: true },
+            { answerText: 'Б', isCorrect: false },
+            { answerText: 'В', isCorrect: false },
+            { answerText: 'Г', isCorrect: false },
+        ],
+    },
 
-    // {
-    //     questionImage: [image4],
-    //     answerType: 'select',
-    //     answerOptions: [
-    //         { answerText: 'A', isCorrect: true },
-    //         { answerText: 'Б', isCorrect: false },
-    //         { answerText: 'В', isCorrect: false },
-    //         { answerText: 'Г', isCorrect: false },
-    //         { answerText: 'Д', isCorrect: false },
-    //     ],
-    // },
+    {
+        questionImage: [image4],
+        answerType: 'select',
+        answerOptions: [
+            { answerText: 'A', isCorrect: true },
+            { answerText: 'Б', isCorrect: false },
+            { answerText: 'В', isCorrect: false },
+            { answerText: 'Г', isCorrect: false },
+            { answerText: 'Д', isCorrect: false },
+        ],
+    },
 
-
-
-    // {
-    //     questionImage: [image6],
-    //     answerType: 'select',
-    //     answerOptions: [
-    //         { answerText: 'A', isCorrect: true },
-    //         { answerText: 'Б', isCorrect: false },
-    //         { answerText: 'В', isCorrect: false },
-    //         { answerText: 'Г', isCorrect: false },
-    //         { answerText: 'Д', isCorrect: false },
-    //     ],
-    // },
-
-    // {
-    //     questionImage: [image7],
-    //     answerType: 'select',
-    //     answerOptions: [
-    //         { answerText: 'A', isCorrect: true },
-    //         { answerText: 'Б', isCorrect: false },
-    //         { answerText: 'В', isCorrect: false },
-    //         { answerText: 'Г', isCorrect: false },
-    //         { answerText: 'Д', isCorrect: false },
-    //     ],
-    // },
+    {
+        questionImage: [image5],
+        answerType: 'input',
+        answerOptions: [],
+        correctAnswer: 17.5,
+    },
 
 
-    // {
-    //     questionImage: [image8],
-    //     answerType: 'multiselect',
-    //     answerOptions: [
-    //         [
-    //             { answerText: 'A', isCorrect: false },
-    //             { answerText: 'Б', isCorrect: true },
-    //             { answerText: 'В', isCorrect: false },
-    //             { answerText: 'Г', isCorrect: false },
-    //             { answerText: 'A', isCorrect: false }
-    //         ],
-    //         [
-    //             { answerText: 'Б', isCorrect: true },
-    //             { answerText: 'В', isCorrect: false },
-    //             { answerText: 'Г', isCorrect: false },
-    //             { answerText: 'A', isCorrect: false }
-    //         ],
-    //         [
-    //             { answerText: 'Б', isCorrect: true },
-    //             { answerText: 'В', isCorrect: false },
-    //             { answerText: 'Г', isCorrect: false },
-    //             { answerText: 'A', isCorrect: false }
-    //         ]
-    //     ],
-    // },
+    {
+        questionImage: [image6],
+        answerType: 'select',
+        answerOptions: [
+            { answerText: 'A', isCorrect: true },
+            { answerText: 'Б', isCorrect: false },
+            { answerText: 'В', isCorrect: false },
+            { answerText: 'Г', isCorrect: false },
+            { answerText: 'Д', isCorrect: false },
+        ],
+    },
 
-    // {
-    //     questionImage: [image9],
-    //     answerType: 'multiselect',
-    //     answerOptions: [
-    //         [
-    //             { answerText: 'A', isCorrect: false },
-    //             { answerText: 'Б', isCorrect: true },
-    //             { answerText: 'В', isCorrect: false },
-    //             { answerText: 'Г', isCorrect: false },
-    //             { answerText: 'A', isCorrect: false }
-    //         ],
-    //         [
-    //             { answerText: 'Б', isCorrect: true },
-    //             { answerText: 'В', isCorrect: false },
-    //             { answerText: 'Г', isCorrect: false },
-    //             { answerText: 'A', isCorrect: false }
-    //         ],
-    //         [
-    //             { answerText: 'Б', isCorrect: true },
-    //             { answerText: 'В', isCorrect: false },
-    //             { answerText: 'Г', isCorrect: false },
-    //             { answerText: 'A', isCorrect: false }
-    //         ]
-    //     ],
-    // },
+    {
+        questionImage: [image7],
+        answerType: 'select',
+        answerOptions: [
+            { answerText: 'A', isCorrect: true },
+            { answerText: 'Б', isCorrect: false },
+            { answerText: 'В', isCorrect: false },
+            { answerText: 'Г', isCorrect: false },
+            { answerText: 'Д', isCorrect: false },
+        ],
+    },
 
-    // {
-    //     questionImage: [image10],
-    //     answerType: 'multiselect',
-    //     answerOptions: [
-    //         [
-    //             { answerText: 'A', isCorrect: false },
-    //             { answerText: 'Б', isCorrect: true },
-    //             { answerText: 'В', isCorrect: false },
-    //             { answerText: 'Г', isCorrect: false },
-    //             { answerText: 'A', isCorrect: false }
-    //         ],
-    //         [
-    //             { answerText: 'Б', isCorrect: true },
-    //             { answerText: 'В', isCorrect: false },
-    //             { answerText: 'Г', isCorrect: false },
-    //             { answerText: 'A', isCorrect: false }
-    //         ],
-    //         [
-    //             { answerText: 'Б', isCorrect: true },
-    //             { answerText: 'В', isCorrect: false },
-    //             { answerText: 'Г', isCorrect: false },
-    //             { answerText: 'A', isCorrect: false }
-    //         ]
-    //     ],
-    // },
+
+    {
+        questionImage: [image8],
+        answerType: 'multiSelect',
+        answerOptions: [
+            [
+                { answerText: 'A', isCorrect: false },
+                { answerText: 'Б', isCorrect: true },
+                { answerText: 'В', isCorrect: false },
+                { answerText: 'Г', isCorrect: false },
+                { answerText: 'A', isCorrect: false }
+            ],
+            [
+                { answerText: 'Б', isCorrect: true },
+                { answerText: 'В', isCorrect: false },
+                { answerText: 'Г', isCorrect: false },
+                { answerText: 'A', isCorrect: false }
+            ],
+            [
+                { answerText: 'Б', isCorrect: true },
+                { answerText: 'В', isCorrect: false },
+                { answerText: 'Г', isCorrect: false },
+                { answerText: 'A', isCorrect: false }
+            ]
+        ],
+    },
+
+    {
+        questionImage: [image9],
+        answerType: 'multiSelect',
+        answerOptions: [
+            [
+                { answerText: 'A', isCorrect: false },
+                { answerText: 'Б', isCorrect: true },
+                { answerText: 'В', isCorrect: false },
+                { answerText: 'Г', isCorrect: false },
+                { answerText: 'A', isCorrect: false }
+            ],
+            [
+                { answerText: 'A', isCorrect: false },
+                { answerText: 'Б', isCorrect: true },
+                { answerText: 'В', isCorrect: false },
+                { answerText: 'Г', isCorrect: false },
+                { answerText: 'A', isCorrect: false }
+            ],
+            [
+                { answerText: 'A', isCorrect: false },
+                { answerText: 'Б', isCorrect: true },
+                { answerText: 'В', isCorrect: false },
+                { answerText: 'Г', isCorrect: false },
+                { answerText: 'A', isCorrect: false }
+            ]
+        ],
+    },
+
+    {
+        questionImage: [image10],
+        answerType: 'multiSelect',
+        answerOptions: [
+            [
+                { answerText: 'A', isCorrect: false },
+                { answerText: 'Б', isCorrect: true },
+                { answerText: 'В', isCorrect: false },
+                { answerText: 'Г', isCorrect: false },
+                { answerText: 'A', isCorrect: false }
+            ],
+            [
+                { answerText: 'Б', isCorrect: true },
+                { answerText: 'В', isCorrect: false },
+                { answerText: 'Г', isCorrect: false },
+                { answerText: 'A', isCorrect: false }
+            ],
+            [
+                { answerText: 'Б', isCorrect: true },
+                { answerText: 'В', isCorrect: false },
+                { answerText: 'Г', isCorrect: false },
+                { answerText: 'A', isCorrect: false }
+            ]
+        ],
+    },
 ];
 
 export default questionsJSON;

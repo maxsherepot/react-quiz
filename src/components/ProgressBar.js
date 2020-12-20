@@ -4,6 +4,8 @@ import React from 'react';
 const ProgressBar = (props) => {
     const { progress, currentQuestion, questions } = props;
 
+
+
     return (
         <div className="mb-2">
             <span className="accomplishedOn d-flex justify-content-center mb-2">Пройдено на {progress}%</span>
