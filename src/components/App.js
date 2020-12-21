@@ -5,6 +5,8 @@ import QuestionSection from './QuestionSection';
 import AnswerSection from './AnswerSection';
 import questionsJSON from "../json/json.js";
 import leftImage from "../images/leftImage.png";
+import RegistrationForm from './RegistrationForm';
+import Results from './Results';
 
 
 const App = () => {
@@ -37,7 +39,7 @@ const App = () => {
 
 	const onNextQuestionClick = (value) => {
 		const sortedItemsArr = itemsArr.sort(function (a, b) { return a - b });
-		
+
 		// Відмічання правильних відповідей для select'а
 		{ isCorrect && setScore(score + 1) }
 
@@ -52,12 +54,12 @@ const App = () => {
 			questionsJSON[currentQuestion].answerType === "doubleSelect" &&
 				sortedItemsArr.join() === questionsJSON[currentQuestion].correctArr.join() && setScore(score + 1)
 		}
-		
+
 		// Відмічання правильних відповідей для input'а
 		const inputNumber = parseFloat(value.replace(/,/, "."));
 		{ inputNumber === questionsJSON[currentQuestion].correctAnswer && setScore(score + 1) }
-		
-		
+
+
 
 		// Перехід на наступне питання
 		setItemsArr([]);
@@ -74,13 +76,14 @@ const App = () => {
 	};
 
 
-
 	return (
 		<div className="d-flex">
 			<img src={leftImage} alt="left" className="imageBlock"></img>
 			<div className='container'>
 				<div className='app d-flex justify-content-center flex-column '>
-					{showScore ?
+					<RegistrationForm />
+					{/* <Results /> */}
+					{/* {showScore ?
 						<ScoreWindow
 							score={score}
 							questions={questionsJSON} />
@@ -106,7 +109,7 @@ const App = () => {
 									itemsArr={itemsArr}
 									addItems={addItems} />
 							</>
-						)}
+						)} */}
 				</div>
 			</div>
 		</div>
