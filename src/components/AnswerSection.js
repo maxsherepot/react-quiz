@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 
 const AnswerSection = (props) => {
-    const { questions, currentQuestion, handleAnswerOptionClick, checked, onCheckboxClick, id } = props;
+    const { questions, currentQuestion, onNextQuestionClick, checked, onCheckboxClick, id, addItems,itemsArr } = props;
     const [value, setValue] = useState("");
 
 
     let answerTypeClass;
     questions[currentQuestion].answerType === "multiSelect" ?
-        answerTypeClass = "d-flex flex-column" : answerTypeClass = "d-flex";
+        answerTypeClass = "d-flex flex-column align-self-start" : answerTypeClass = "d-flex align-self-start";
 
 
     return (
@@ -52,7 +52,7 @@ const AnswerSection = (props) => {
                 {questions[currentQuestion].answerType === "multiSelect" &&
                     questions[currentQuestion].answerOptions.map(function (elem, index) {
                         return (
-                            <div key={index} className="13 d-flex align-items-center ">
+                            <div key={index} className="d-flex align-items-center ">
                                 {index === 0 && <span className="bold">1</span>}
                                 {index === 1 && <span className="bold">2</span>}
                                 {index === 2 && <span className="bold">3</span>}
@@ -61,13 +61,12 @@ const AnswerSection = (props) => {
                                         <input
                                             key={index}
                                             className="my-1 mx-2"
+                                            checked={itemsArr.includes(num.id)}
                                             type="checkbox"
-                                            checked={checked && index === id ? true : false}
-                                            onChange={() => onCheckboxClick(elem.isCorrect, index)}
+                                            onChange={() => addItems(num.id)}
                                         ></input>
                                     )
-                                })
-                                }
+                                })}
                                 </div>
                             </div>
                         )
@@ -77,7 +76,7 @@ const AnswerSection = (props) => {
             <button
                 className="btn btn-md btn-primary rounded mt-3"
                 type="submit"
-                onClick={() => handleAnswerOptionClick(value)}
+                onClick={() => onNextQuestionClick(value)}
             >Наступне</button>
         </div>
     );

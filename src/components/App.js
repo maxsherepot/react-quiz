@@ -15,6 +15,7 @@ const App = () => {
 	const [isCorrect, setIsCorrect] = useState(false);
 	const [checked, setChecked] = useState(false);
 	const [id, setId] = useState(null);
+	const [itemsArr, setItemsArr] = useState([]);
 
 
 	const onCheckboxClick = (answerOption, index) => {
@@ -23,12 +24,35 @@ const App = () => {
 		setChecked(checked => !checked);
 	};
 
-	const handleAnswerOptionClick = (value) => {
+	const addItems = (id) => {
+		const clickedCategory = itemsArr.indexOf(id);
+		const all = [...itemsArr];
+		if (clickedCategory === -1) {
+			all.push(id);
+		} else {
+			all.splice(clickedCategory, 1);
+		}
+		setItemsArr(all);
+	};
+
+	const onNextQuestionClick = (value) => {
+		// Відмічання правильних відповідей для select'а
+		{ isCorrect && setScore(score + 1) }
+
+		// Відмічання правильних відповідей для multiSelect'а
+		const sortedItemsArr = itemsArr.sort(function (a, b) { return a - b });
+		{
+			questionsJSON[currentQuestion].answerType === "multiSelect" &&
+				sortedItemsArr.join() === questionsJSON[currentQuestion].correctArr.join() && setScore(score + 1)
+		}
+
 		// Відмічання правильних відповідей для input'а
 		const inputNumber = parseFloat(value.replace(/,/, "."));
 		{ inputNumber === questionsJSON[currentQuestion].correctAnswer && setScore(score + 1) }
+		
 
 		// Перехід на наступне питання
+		setItemsArr([]);
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < questionsJSON.length) {
 			setCurrentQuestion(nextQuestion);
@@ -42,18 +66,19 @@ const App = () => {
 	};
 
 
+
 	return (
 		<div className="d-flex">
 			<img src={leftImage} alt="left" className="imageBlock"></img>
 			<div className='container'>
-				<div className='app d-flex align-items-center justify-content-center flex-column '>
+				<div className='app d-flex justify-content-center flex-column '>
 					{showScore ?
 						<ScoreWindow
 							score={score}
 							questions={questionsJSON} />
 						: (
 							<>
-								<span className="mb-4 online-test bold">Oнлайн тест з математики</span>
+								<span className="mb-4 online-test bold text-center">Oнлайн тест з математики</span>
 								<ProgressBar
 									progress={progress}
 									currentQuestion={currentQuestion}
@@ -63,13 +88,15 @@ const App = () => {
 									questions={questionsJSON}
 									currentQuestion={currentQuestion} />
 
-								{<AnswerSection
+								<AnswerSection
 									questions={questionsJSON}
 									currentQuestion={currentQuestion}
-									handleAnswerOptionClick={handleAnswerOptionClick}
+									onNextQuestionClick={onNextQuestionClick}
 									onCheckboxClick={onCheckboxClick}
 									checked={checked}
-									id={id} />}
+									id={id}
+									itemsArr={itemsArr}
+									addItems={addItems} />
 							</>
 						)}
 				</div>

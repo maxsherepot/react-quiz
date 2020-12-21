@@ -5,7 +5,7 @@ const ScoreWindow = (props) => {
     const { score, questions } = props;
 
     return (
-        <div className='score-section'>
+        <div className='score-section text-center'>
             You scored {score} out of {questions.length}
         </div>
     );
