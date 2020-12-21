@@ -36,19 +36,27 @@ const App = () => {
 	};
 
 	const onNextQuestionClick = (value) => {
+		const sortedItemsArr = itemsArr.sort(function (a, b) { return a - b });
+		
 		// Відмічання правильних відповідей для select'а
 		{ isCorrect && setScore(score + 1) }
 
 		// Відмічання правильних відповідей для multiSelect'а
-		const sortedItemsArr = itemsArr.sort(function (a, b) { return a - b });
 		{
 			questionsJSON[currentQuestion].answerType === "multiSelect" &&
 				sortedItemsArr.join() === questionsJSON[currentQuestion].correctArr.join() && setScore(score + 1)
 		}
 
+		// Відмічання правильних відповідей для doubleSelect'а
+		{
+			questionsJSON[currentQuestion].answerType === "doubleSelect" &&
+				sortedItemsArr.join() === questionsJSON[currentQuestion].correctArr.join() && setScore(score + 1)
+		}
+		
 		// Відмічання правильних відповідей для input'а
 		const inputNumber = parseFloat(value.replace(/,/, "."));
 		{ inputNumber === questionsJSON[currentQuestion].correctAnswer && setScore(score + 1) }
+		
 		
 
 		// Перехід на наступне питання
