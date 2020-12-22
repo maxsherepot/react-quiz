@@ -12,6 +12,8 @@ const QuestionSection = (props) => {
                 <img key={index} className="mt-3" src={image} alt="question" />
             )}
 
+                <div className="question-text mt-4 mb-2 ml-1">{questions[currentQuestion].questionText}</div>
+
         </div>
     );
 };

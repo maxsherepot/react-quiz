@@ -87,8 +87,8 @@ const App = () => {
 			<img src={leftImage} alt="left" className="imageBlock"></img>
 			<div className='container'>
 				<div className='app d-flex justify-content-center flex-column '>
-
-					{registrationForm ?
+					
+					{/* */} {registrationForm ?
 						<RegistrationForm
 							setRegistrationForm={setRegistrationForm} />
 						:

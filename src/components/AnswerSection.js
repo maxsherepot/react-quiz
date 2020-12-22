@@ -35,6 +35,7 @@ const AnswerSection = (props) => {
     }
 
 
+
     return (
         <div className='d-flex answer-section flex-column align-items-center'>
             <div className={answerTypeClass}>

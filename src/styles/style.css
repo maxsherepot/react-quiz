@@ -75,6 +75,17 @@ input[type=checkbox] {
   margin-right: 10px;
 }
 
+.detailsText {
+  font-size: .8rem;
+  color: gray;
+  border-bottom: 1px dotted gray
+}
+
+.question-text {
+  font-size: .9rem;
+  color: gray;
+}
+
 
 
 

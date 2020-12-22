@@ -14,6 +14,7 @@ const questionsJSON = [
     {
         questionImage: [image1],
         answerType: 'select',
+        questionText: "Позначте відповіді:",
         answerOptions: [
             { answerText: 'A', isCorrect: true },
             { answerText: 'Б', isCorrect: false },
@@ -26,6 +27,7 @@ const questionsJSON = [
     {
         questionImage: [image2],
         answerType: 'numbersInput',
+        questionText: "Позначте відповіді:",
         answerOptions: [
             { answerText: '1', id: 1 },
             { answerText: '2', id: 2 },
@@ -36,6 +38,7 @@ const questionsJSON = [
     {
         questionImage: [image3],
         answerType: 'doubleSelect',
+        questionText: "Позначте відповіді:",
         correctArr: [1, 4],
         answerOptions: [
             { answerText: '1', id: 1 },
@@ -48,6 +51,7 @@ const questionsJSON = [
     {
         questionImage: [image4],
         answerType: 'select',
+        questionText: "Позначте відповіді:",
         answerOptions: [
             { answerText: 'A', isCorrect: true },
             { answerText: 'Б', isCorrect: false },
@@ -60,12 +64,14 @@ const questionsJSON = [
     {
         questionImage: [image5],
         answerType: 'input',
+        questionText: "Впишіть відповідь:",
         correctAnswer: 17.5,
     },
 
     {
         questionImage: [image6],
         answerType: 'select',
+        questionText: "Позначте відповіді:",
         answerOptions: [
             { answerText: 'A', isCorrect: true },
             { answerText: 'Б', isCorrect: false },
@@ -78,6 +84,7 @@ const questionsJSON = [
     {
         questionImage: [image7],
         answerType: 'select',
+        questionText: "Позначте відповіді:",
         answerOptions: [
             { answerText: 'A', isCorrect: true },
             { answerText: 'Б', isCorrect: false },
@@ -90,6 +97,7 @@ const questionsJSON = [
     {
         questionImage: [image8],
         answerType: 'multiSelect',
+        questionText: "Впишіть відповіді:",
         correctArr: [1, 7, 13],
         answerOptions: [
             [
@@ -119,6 +127,7 @@ const questionsJSON = [
     {
         questionImage: [image9],
         answerType: 'multiSelect',
+        questionText: "Впишіть відповіді:",
         correctArr: [1, 7, 13],
         answerOptions: [
             [
@@ -148,6 +157,7 @@ const questionsJSON = [
     {
         questionImage: [image10],
         answerType: 'multiSelect',
+        questionText: "Впишіть відповіді:",
         correctArr: [1, 7, 13],
         answerOptions: [
             [
