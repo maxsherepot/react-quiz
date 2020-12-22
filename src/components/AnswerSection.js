@@ -4,48 +4,33 @@ import React, { useState } from 'react';
 const AnswerSection = (props) => {
     const { questions, currentQuestion, onNextQuestionClick, checked, onCheckboxClick, id, addItems, itemsArr } = props;
     const [value, setValue] = useState("");
-
-    const [answer1, setAnswer1] = useState(false);
-    const [answer2, setAnswer2] = useState(false);
-    const [answer3, setAnswer3] = useState(false);
-
+    const [answer1, setAnswer1] = useState(null);
+    const [answer2, setAnswer2] = useState(null);
+    const [answer3, setAnswer3] = useState(null);
 
     let answerTypeClass;
-
-    questions[currentQuestion].answerType !== "select" ?
-        answerTypeClass = "d-flex flex-column align-self-start" : answerTypeClass = "d-flex align-self-start";
-
-
-    // switch (questions[currentQuestion].answerType) {
-    //     case "multiSelect" || "doubleSelect":
-    //         answerTypeClass = "d-flex flex-column align-self-start"
-
-    //     case "doubleSelect":
-    //         answerTypeClass = "d-flex flex-column align-self-start"
-
-    //     default:
-    //         answerTypeClass = "d-flex align-self-start"
-    // }
+    if (questions[currentQuestion].answerType === "numbersInput")
+        answerTypeClass = "d-flex align-self-start flex-column"
+    else if (questions[currentQuestion].answerType === "multiSelect")
+        answerTypeClass = "d-flex align-self-start flex-column"
+    else
+        answerTypeClass = "d-flex align-self-start"
 
 
     const getNumbers = (event, id) => {
         const answer = parseFloat(event.target.value);
-        (id === 1 && answer === 1) ? setAnswer1(true) : setAnswer1(false);
-        (id === 2 && answer === 2) ? setAnswer2(true) : setAnswer2(false);
-        (id === 3 && answer === 3) ? setAnswer3(true) : setAnswer3(false);
-       
-        // console.log("answer1", answer1)
-        // console.log("answer2", answer2)
-        // console.log("answer3", answer3)
+        id === 1 && setAnswer1(answer);
+        id === 2 && setAnswer2(answer);
+        id === 3 && setAnswer3(answer);
     }
-    if (answer1 && answer2 && answer3) {
-        console.log("good")
+
+    const getAnswers = () => {
+        let correctAnswers;
+        (answer1 === 3 && answer2 === 1 && answer3 === 2) ? correctAnswers = true : correctAnswers = false;
+        onNextQuestionClick(value, correctAnswers);
     }
-     //console.log("answer1", answer1)
-    // console.log("answer2", answer2)
 
-
-
+    
     return (
         <div className='d-flex answer-section flex-column align-items-center'>
             <div className={answerTypeClass}>
@@ -70,7 +55,7 @@ const AnswerSection = (props) => {
                         <input type="text"
                             onChange={(event) => setValue(event.target.value)}
                             placeholder="Ваша відповідь"
-                            className="textInput form-control form-control-sm" />
+                            className="textInput form-control" />
                     </div>
                 }
 
@@ -122,7 +107,6 @@ const AnswerSection = (props) => {
                     ))
                 }
 
-
                 {/* ///////////////answerType === "numbersInput" */}
                 {questions[currentQuestion].answerType === "numbersInput" &&
                     questions[currentQuestion].answerOptions.map((num, index) => (
@@ -138,11 +122,6 @@ const AnswerSection = (props) => {
                                 <option>2</option>
                                 <option>3</option>
                             </select>
-                            {/* <input
-                                className="numbersInput form-control form-control shadow"
-                                type="select"
-                            onChange={(event) => getNumbers(event)}
-                            ></input> */}
                         </div>
                     ))
                 }
@@ -150,7 +129,7 @@ const AnswerSection = (props) => {
             <button
                 className="btn btn-md btn-primary rounded mt-3"
                 type="submit"
-                onClick={() => onNextQuestionClick(value)}
+                onClick={() => getAnswers()}
             >Наступне</button>
         </div>
     );

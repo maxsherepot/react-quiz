@@ -37,9 +37,12 @@ const App = () => {
 		setItemsArr(all);
 	};
 
-	const onNextQuestionClick = (value) => {
+	const onNextQuestionClick = (value,correctAnswers) => {
 		const sortedItemsArr = itemsArr.sort(function (a, b) { return a - b });
 
+		// Відмічання правильних відповідей для numbersInput'а
+		{ correctAnswers && setScore(score + 1) }
+		
 		// Відмічання правильних відповідей для select'а
 		{ isCorrect && setScore(score + 1) }
 
@@ -58,8 +61,6 @@ const App = () => {
 		// Відмічання правильних відповідей для input'а
 		const inputNumber = parseFloat(value.replace(/,/, "."));
 		{ inputNumber === questionsJSON[currentQuestion].correctAnswer && setScore(score + 1) }
-
-
 
 		// Перехід на наступне питання
 		setItemsArr([]);
@@ -81,9 +82,9 @@ const App = () => {
 			<img src={leftImage} alt="left" className="imageBlock"></img>
 			<div className='container'>
 				<div className='app d-flex justify-content-center flex-column '>
-					<RegistrationForm />
-					{/* <Results /> */}
-					{/* {showScore ?
+					{/* <RegistrationForm />
+					<Results />  */}
+					 {showScore ?
 						<ScoreWindow
 							score={score}
 							questions={questionsJSON} />
@@ -109,7 +110,7 @@ const App = () => {
 									itemsArr={itemsArr}
 									addItems={addItems} />
 							</>
-						)} */}
+						)} 
 				</div>
 			</div>
 		</div>
