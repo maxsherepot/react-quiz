@@ -1,8 +1,7 @@
 import React from 'react';
 
 
-const RegistrationForm = () => {
-
+const RegistrationForm = ({ setRegistrationForm }) => {
 
     return (
         <div>
@@ -23,8 +22,10 @@ const RegistrationForm = () => {
                     placeholder="Прізвище"></input>
 
                 <button
+                    type="submit"
+                    onClick={() => setRegistrationForm(false)}
                     className="btn btn-md btn-primary rounded"
-                    type="submit">Почати</button>
+                >Почати</button>
             </form>
         </div>
     );

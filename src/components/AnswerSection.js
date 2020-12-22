@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 
 
 const AnswerSection = (props) => {
-    const { questions, currentQuestion, onNextQuestionClick, checked, onCheckboxClick, id, addItems, itemsArr } = props;
+    const { questions, currentQuestion, onNextQuestionClick, checked, onCheckboxClick, id, addItems, itemsArr, buttonLabel } = props;
     const [value, setValue] = useState("");
     const [answer1, setAnswer1] = useState(null);
     const [answer2, setAnswer2] = useState(null);
     const [answer3, setAnswer3] = useState(null);
+
 
     let answerTypeClass;
     if (questions[currentQuestion].answerType === "numbersInput")
@@ -25,12 +26,15 @@ const AnswerSection = (props) => {
     }
 
     const getAnswers = () => {
-        let correctAnswers;
-        (answer1 === 3 && answer2 === 1 && answer3 === 2) ? correctAnswers = true : correctAnswers = false;
-        onNextQuestionClick(value, correctAnswers);
+        onNextQuestionClick(value, false);
+        (answer1 === 3 && answer2 === 1 && answer3 === 2) &&
+            onNextQuestionClick(value, true);
+        setAnswer1(null);
+        setAnswer2(null);
+        setAnswer3(null);
     }
 
-    
+
     return (
         <div className='d-flex answer-section flex-column align-items-center'>
             <div className={answerTypeClass}>
@@ -130,7 +134,7 @@ const AnswerSection = (props) => {
                 className="btn btn-md btn-primary rounded mt-3"
                 type="submit"
                 onClick={() => getAnswers()}
-            >Наступне</button>
+            >{buttonLabel}</button>
         </div>
     );
 };

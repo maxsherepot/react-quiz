@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
-import ScoreWindow from './ScoreWindow';
 import ProgressBar from './ProgressBar';
 import QuestionSection from './QuestionSection';
 import AnswerSection from './AnswerSection';
 import questionsJSON from "../json/json.js";
 import leftImage from "../images/leftImage.png";
 import RegistrationForm from './RegistrationForm';
+import Rating from './Rating';
 import Results from './Results';
 
 
 const App = () => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [score, setScore] = useState(0);
-	const [showScore, setShowScore] = useState(false);
+	const [showResults, setshowResults] = useState(false);
 	const [progress, setProgress] = useState(0);
 	const [isCorrect, setIsCorrect] = useState(false);
 	const [checked, setChecked] = useState(false);
 	const [id, setId] = useState(null);
 	const [itemsArr, setItemsArr] = useState([]);
+	const [registrationForm, setRegistrationForm] = useState(true);
+
+
+	let buttonLabel;
+	currentQuestion < 9 ? buttonLabel = "Наступне" : buttonLabel = "Дивитися результат";
 
 
 	const onCheckboxClick = (answerOption, index) => {
@@ -37,12 +42,12 @@ const App = () => {
 		setItemsArr(all);
 	};
 
-	const onNextQuestionClick = (value,correctAnswers) => {
+	const onNextQuestionClick = (value, correctAnswers) => {
 		const sortedItemsArr = itemsArr.sort(function (a, b) { return a - b });
 
 		// Відмічання правильних відповідей для numbersInput'а
 		{ correctAnswers && setScore(score + 1) }
-		
+
 		// Відмічання правильних відповідей для select'а
 		{ isCorrect && setScore(score + 1) }
 
@@ -72,7 +77,7 @@ const App = () => {
 			setProgress((progress) => { return progress + 10 })
 		} else {
 			// Показ рахунку вкінці квізу
-			setShowScore(true);
+			setshowResults(true);
 		};
 	};
 
@@ -82,35 +87,38 @@ const App = () => {
 			<img src={leftImage} alt="left" className="imageBlock"></img>
 			<div className='container'>
 				<div className='app d-flex justify-content-center flex-column '>
-					{/* <RegistrationForm />
-					<Results />  */}
-					 {showScore ?
-						<ScoreWindow
-							score={score}
-							questions={questionsJSON} />
-						: (
-							<>
-								<span className="mb-4 online-test bold text-center">Oнлайн тест з математики</span>
-								<ProgressBar
-									progress={progress}
-									currentQuestion={currentQuestion}
-									questions={questionsJSON} />
 
-								<QuestionSection
-									questions={questionsJSON}
-									currentQuestion={currentQuestion} />
+					{registrationForm ?
+						<RegistrationForm
+							setRegistrationForm={setRegistrationForm} />
+						:
+						showResults ?
+							<Results
+								score={score} />
+							: (
+								<>
+									<span className="mb-4 online-test bold text-center">Oнлайн тест з математики</span>
+									<ProgressBar
+										progress={progress}
+										currentQuestion={currentQuestion}
+										questions={questionsJSON} />
 
-								<AnswerSection
-									questions={questionsJSON}
-									currentQuestion={currentQuestion}
-									onNextQuestionClick={onNextQuestionClick}
-									onCheckboxClick={onCheckboxClick}
-									checked={checked}
-									id={id}
-									itemsArr={itemsArr}
-									addItems={addItems} />
-							</>
-						)} 
+									<QuestionSection
+										questions={questionsJSON}
+										currentQuestion={currentQuestion} />
+
+									<AnswerSection
+										questions={questionsJSON}
+										currentQuestion={currentQuestion}
+										onNextQuestionClick={onNextQuestionClick}
+										onCheckboxClick={onCheckboxClick}
+										checked={checked}
+										id={id}
+										itemsArr={itemsArr}
+										addItems={addItems}
+										buttonLabel={buttonLabel}/>
+								</>
+							)}
 				</div>
 			</div>
 		</div>
