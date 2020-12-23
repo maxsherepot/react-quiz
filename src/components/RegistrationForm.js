@@ -6,23 +6,24 @@ const RegistrationForm = ({ setRegistrationForm }) => {
     const [lastName, setLastName] = useState("");
 
 
-    function onGetName(event) {
+    const onGetName = (event) => {
         setName(event.target.value);
-    }
+    };
 
-    function onGetLastName(event) {
+    const onGetLastName = (event) => {
         setLastName(event.target.value);
-    }
+    };
 
-    function postUserData() {
+    const postUserData = () => {
         localStorage.setItem("first_name", name);
         localStorage.setItem("last_name", lastName);
         setRegistrationForm(false);
-    }
+    };
+
 
     return (
         <div>
-            <form className="text-center " action="#!">
+            <form className="text-center">
                 <div className="online-test bold text-center">Oнлайн тест з математики</div>
                 <div className="question-count mb-4">Введіть ваші дані щоб пройти тест</div>
 

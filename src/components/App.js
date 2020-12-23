@@ -20,7 +20,6 @@ const App = () => {
 	const [registrationForm, setRegistrationForm] = useState(true);
 
 
-
 	let buttonLabel;
 	currentQuestion < 9 ? buttonLabel = "Наступне" : buttonLabel = "Дивитися результат";
 
@@ -87,7 +86,7 @@ const App = () => {
 			<div className='container'>
 				<div className='app d-flex justify-content-center flex-column '>
 
-				{registrationForm ?
+					{registrationForm ?
 						<RegistrationForm
 							setRegistrationForm={setRegistrationForm} />
 						:

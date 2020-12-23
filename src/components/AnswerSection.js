@@ -8,7 +8,6 @@ const AnswerSection = (props) => {
     const [answer2, setAnswer2] = useState(null);
     const [answer3, setAnswer3] = useState(null);
 
-
     let answerTypeClass;
     if (questions[currentQuestion].answerType === "numbersInput")
         answerTypeClass = "d-flex align-self-start flex-column"
@@ -23,7 +22,7 @@ const AnswerSection = (props) => {
         id === 1 && setAnswer1(answer);
         id === 2 && setAnswer2(answer);
         id === 3 && setAnswer3(answer);
-    }
+    };
 
     const getAnswers = () => {
         onNextQuestionClick(value, false);
@@ -32,7 +31,7 @@ const AnswerSection = (props) => {
         setAnswer1(null);
         setAnswer2(null);
         setAnswer3(null);
-    }
+    };
 
 
     return (

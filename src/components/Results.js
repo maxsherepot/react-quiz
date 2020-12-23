@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Rating from './Rating';
 
 
-
 const Results = ({ score }) => {
     const percentage = score * 10;
     const [rating, showRating] = useState(false);
 
-    useEffect(() => {
-        ///////////////// post data to Rating
+
+    const postDataToRating = () => {
         const axios = require('axios');
         const config = { headers: { 'Content-Type': 'multipart/form-data' } };
         let fd = new FormData();
@@ -16,12 +15,15 @@ const Results = ({ score }) => {
         fd.append("last_name", localStorage.getItem("last_name"));
         fd.append("result", percentage);
         return axios.post("http://api.phpist.com.ua/api/add_result", fd, config);
+    };
+
+    useEffect(() => {
+        postDataToRating();
     }, []);
 
-
-    function openRating() {
+    const openRating = () => {
         showRating(true);
-    }
+    };
 
 
     return (
