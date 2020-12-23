@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 
 const RegistrationForm = ({ setRegistrationForm }) => {
+    const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
+
+
+    function onGetName(event) {
+        setName(event.target.value);
+    }
+
+    function onGetLastName(event) {
+        setLastName(event.target.value);
+    }
+
+    function postUserData() {
+        localStorage.setItem("first_name", name);
+        localStorage.setItem("last_name", lastName);
+        setRegistrationForm(false);
+    }
 
     return (
         <div>
@@ -10,20 +27,22 @@ const RegistrationForm = ({ setRegistrationForm }) => {
                 <div className="question-count mb-4">Введіть ваші дані щоб пройти тест</div>
 
                 <input
+                    onChange={(event) => onGetName(event)}
                     required
                     type="text"
                     className="textInput form-control mb-3 shadow"
-                    placeholder="Ваше ім'я"></input>
+                    placeholder="Iм'я"></input>
 
                 <input
+                    onChange={(event) => onGetLastName(event)}
                     required
-                    type="password"
+                    type="text"
                     className="textInput form-control mb-3 shadow"
                     placeholder="Прізвище"></input>
 
                 <button
                     type="submit"
-                    onClick={() => setRegistrationForm(false)}
+                    onClick={() => postUserData()}
                     className="btn btn-md btn-primary rounded"
                 >Почати</button>
             </form>

@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 const Rating = () => {
+    const axios = require('axios');
+    const [results, setResults] = useState([])
+
+    useEffect(() => {
+        axios.get('http://api.phpist.com.ua/api/get_result')
+            .then(response => setResults(response.data))
+            .catch(function (error) {
+                console.log(error);
+            })
+    }, [])
+
 
     return (
         <div>
             <form className="d-flex flex-column align-items-center" action="#!">
                 <div className="online-test bold">Результати онлайн тесту з математики всіх учасників</div>
+                
                 <div className="overallRating rounded question-count py-2 px-3 mt-3"
                 ><span className="infoIcon">&#9432;</span> Загальний рейтинг: <span className="bold"> 30</span>%</div>
 
@@ -19,12 +31,16 @@ const Rating = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td className="text-left text-body">Іван</td>
-                            <td className="text-center text-body">Стеценко</td>
-                            <td className="text-right text-body text-primary">50</td>
-                        </tr>
-                        
+                        {results.map((result) => {
+                            return (
+                                <tr
+                                    key={result.id}>
+                                    <td className="text-left text-body">{result.first_name}</td>
+                                    <td className="text-center text-body">{result.last_name}</td>
+                                    <td className="text-right text-body text-primary">{result.result}</td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
 

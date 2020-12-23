@@ -5,7 +5,6 @@ import AnswerSection from './AnswerSection';
 import questionsJSON from "../json/json.js";
 import leftImage from "../images/leftImage.png";
 import RegistrationForm from './RegistrationForm';
-import Rating from './Rating';
 import Results from './Results';
 
 
@@ -21,9 +20,9 @@ const App = () => {
 	const [registrationForm, setRegistrationForm] = useState(true);
 
 
+
 	let buttonLabel;
 	currentQuestion < 9 ? buttonLabel = "Наступне" : buttonLabel = "Дивитися результат";
-
 
 	const onCheckboxClick = (answerOption, index) => {
 		setIsCorrect(answerOption);
@@ -87,8 +86,8 @@ const App = () => {
 			<img src={leftImage} alt="left" className="imageBlock"></img>
 			<div className='container'>
 				<div className='app d-flex justify-content-center flex-column '>
-					
-					{/* */} {registrationForm ?
+
+				{registrationForm ?
 						<RegistrationForm
 							setRegistrationForm={setRegistrationForm} />
 						:
@@ -116,7 +115,7 @@ const App = () => {
 										id={id}
 										itemsArr={itemsArr}
 										addItems={addItems}
-										buttonLabel={buttonLabel}/>
+										buttonLabel={buttonLabel} />
 								</>
 							)}
 				</div>
