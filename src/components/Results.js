@@ -1,24 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Rating from './Rating';
-
+import {postDataToRating} from "../helpers/ratingData"
 
 const Results = ({ score }) => {
     const [rating, showRating] = useState(false);
     const percentage = score * 10;
 
 
-    const postDataToRating = () => {
-        const axios = require('axios');
-        const config = { headers: { 'Content-Type': 'multipart/form-data' } };
-        let fd = new FormData();
-        fd.append("first_name", localStorage.getItem("first_name"));
-        fd.append("last_name", localStorage.getItem("last_name"));
-        fd.append("result", percentage);
-        return axios.post("http://api.phpist.com.ua/api/add_result", fd, config);
-    };
-
     useEffect(() => {
-        postDataToRating();
+        postDataToRating(percentage);
     }, []);
 
     const openRating = () => {
@@ -33,7 +23,7 @@ const Results = ({ score }) => {
                     <Rating />
                     :
                     <div>
-                        <form className="d-flex flex-column align-items-center" action="#!">
+                        <form className="d-flex flex-column align-items-center">
                             <div className="online-test bold">Результат онлайн тесту з математики</div>
                             <div className="overallRating rounded question-count py-2 px-3 mt-3"
                             ><span className="infoIcon">&#9432;</span> Ваш тестовий бал: <span className="bold">{percentage}</span>%</div>

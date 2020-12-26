@@ -4,6 +4,7 @@ import React from 'react';
 const SelectAnswer = (props) => {
     const { questions, currentQuestion, checked, id, onCheckboxClick } = props;
 
+    
     return (
         questions[currentQuestion].answerOptions.map((answerOption, index) => (
             <div className="p-2 d-flex flex-column align-items-center" key={index}>

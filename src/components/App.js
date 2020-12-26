@@ -86,40 +86,38 @@ const App = () => {
 			<div className='container'>
 				<div className='app d-flex justify-content-center flex-column '>
 
-					{/* {registrationForm ?
+					{registrationForm ?
 						<RegistrationForm
 							setRegistrationForm={setRegistrationForm} />
 						:
 						showResults ?
 							<Results
 								score={score} />
-							: ( */}
-					<>
-						<span className="mb-4 online-test bold text-center">Oнлайн тест з математики</span>
-						<ProgressBar
-							progress={progress}
-							currentQuestion={currentQuestion}
-							questions={questionsJSON} />
+							: (
+								<>
+									<span className="mb-4 online-test bold text-center">Oнлайн тест з математики</span>
+									<ProgressBar
+										progress={progress}
+										currentQuestion={currentQuestion}
+										questions={questionsJSON} />
 
-						<QuestionSection
-							questions={questionsJSON}
-							currentQuestion={currentQuestion} />
+									<QuestionSection
+										questions={questionsJSON}
+										currentQuestion={currentQuestion} />
 
-						<AnswerSection
-							questions={questionsJSON}
-							currentQuestion={currentQuestion}
-							onNextQuestionClick={onNextQuestionClick}
-							onCheckboxClick={onCheckboxClick}
-							checked={checked}
-							id={id}
-							itemsArr={itemsArr}
-							addItems={addItems}
-							buttonLabel={buttonLabel} />
+									<AnswerSection
+										questions={questionsJSON}
+										currentQuestion={currentQuestion}
+										onNextQuestionClick={onNextQuestionClick}
+										onCheckboxClick={onCheckboxClick}
+										checked={checked}
+										id={id}
+										itemsArr={itemsArr}
+										addItems={addItems}
+										buttonLabel={buttonLabel} />
 
-						<Results
-							score={score} />
-					</>
-					{/* )} */}
+								</>
+							)}
 				</div>
 			</div>
 		</div>

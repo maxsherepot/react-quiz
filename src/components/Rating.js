@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { getDataToRating } from "../helpers/ratingData"
 
 
 const Rating = () => {
-    const axios = require('axios');
     const [results, setResults] = useState([]);
 
     useEffect(() => {
-        axios.get('http://api.phpist.com.ua/api/get_result')
-            .then(response => setResults(response.data))
-            .catch(function (error) {
-                console.log(error);
-            })
+        (async function () {
+            const res = await getDataToRating()
+            setResults(res)
+        })();
     }, []);
 
 
