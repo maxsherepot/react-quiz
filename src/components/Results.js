@@ -3,8 +3,8 @@ import Rating from './Rating';
 
 
 const Results = ({ score }) => {
-    const percentage = score * 10;
     const [rating, showRating] = useState(false);
+    const percentage = score * 10;
 
 
     const postDataToRating = () => {
